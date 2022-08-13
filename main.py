@@ -17,6 +17,7 @@ app_secret = os.environ["APP_SECRET"]
 user_id = os.environ["USER_ID"]
 template_id = os.environ["TEMPLATE_ID"]
 
+body_period = os.environ["BODY_PERIOD"]
 
 def get_weather():
   url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
@@ -27,6 +28,13 @@ def get_weather():
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
   return delta.days
+
+def get_body_period():
+  intevel = 5
+  period = 29
+  lastPeriod = "2022-08-09"
+  dateIntevel = today-lastPeriod
+  return dateIntevel.days
 
 def get_birthday():
   next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
